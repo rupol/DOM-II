@@ -8,6 +8,8 @@ const footer = document.querySelector("footer");
 const footerText = document.querySelector("footer p");
 const navLinks = document.querySelectorAll("nav .nav-link");
 const darkModeButton = document.querySelector(".toggle-btn");
+const headings = document.querySelectorAll("h2");
+const logo = document.querySelector(".logo-heading");
 
 // image mouseenter and mouseleave events
 function imgOpacity(event) {
@@ -97,6 +99,21 @@ function darkMode() {
 }
 
 darkModeButton.addEventListener("click", darkMode);
+
+// logo color scroll event
+function getRandomColor() {
+  var letters = "0123456789ABCDEF";
+  var color = "#";
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
+window.addEventListener("scroll", event => {
+  logo.style.transition = "all .5s";
+  logo.style.color = getRandomColor();
+});
 
 // nav links preventDefault
 function prevDefault(event) {
