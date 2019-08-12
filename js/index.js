@@ -102,7 +102,7 @@ darkModeButton.addEventListener("click", darkMode);
 
 // logo color scroll event
 function getRandomColor() {
-  var letters = "0123456789ABCDEF";
+  var letters = "123456789abcde";
   var color = "#";
   for (var i = 0; i < 6; i++) {
     color += letters[Math.floor(Math.random() * 16)];
@@ -113,6 +113,29 @@ function getRandomColor() {
 window.addEventListener("scroll", event => {
   logo.style.transition = "all .5s";
   logo.style.color = getRandomColor();
+});
+
+// keydown events
+document.addEventListener("keydown", event => {
+  if (event.key === "l") {
+    window.scroll({
+      top: 400,
+      left: 0,
+      behavior: "smooth"
+    });
+  } else if (event.key === "a") {
+    window.scroll({
+      top: 725,
+      left: 0,
+      behavior: "smooth"
+    });
+  } else if (event.key === "p") {
+    window.scroll({
+      top: 1000,
+      left: 0,
+      behavior: "smooth"
+    });
+  }
 });
 
 // nav links preventDefault
