@@ -16,9 +16,9 @@ contentImages.forEach(img => {
   img.addEventListener("mouseleave", imgOpacityRemove);
 });
 
-// destination mouseover, mouseout events, mousedown, mouseup events and stopPropagation
+// destination mouseover, mouseout, mousedown, mouseup events and stopPropagation
 const destinationContainer = document.querySelectorAll(".destination");
-const destinationButton = document.querySelectorAll(".destination .btn");
+const destinationButton = document.querySelectorAll(".btn");
 
 function enlarge(event) {
   event.currentTarget.style.transition = "all .5s";
@@ -57,4 +57,44 @@ destinationButton.forEach(button => {
   button.addEventListener("mouseup", btnNormal);
 });
 
-// header scroll event
+// dark mode click event
+const body = document.querySelector("body");
+const header = document.querySelector("header");
+const footer = document.querySelector("footer");
+const footerText = document.querySelector("footer p");
+const navLinks = document.querySelectorAll("nav .nav-link");
+const darkModeButton = document.querySelector(".toggle-btn");
+body.style.background = "white";
+
+function changeColor(elem, colorChoice) {
+  // makes a given element a specified color - color must be in quotes
+  return (elem.style.color = colorChoice);
+}
+
+function darkMode() {
+  if (body.style.background === "white") {
+    body.style.background = "black";
+    header.style.background = "black";
+    footer.style.background = "#6b6255";
+    changeColor(body, "white");
+    changeColor(footerText, "white");
+    navLinks.forEach(link => {
+      link.style.color = "white";
+    });
+
+    darkModeButton.textContent = "On";
+  } else if (body.style.background === "black") {
+    body.style.background = "white";
+    header.style.background = "white";
+    footer.style.background = "#ffebcd";
+    changeColor(body, "black");
+    changeColor(footerText, "black");
+    navLinks.forEach(link => {
+      link.style.color = "black";
+    });
+
+    darkModeButton.textContent = "Off";
+  }
+}
+
+darkModeButton.addEventListener("click", darkMode);
