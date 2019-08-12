@@ -138,6 +138,23 @@ document.addEventListener("keydown", event => {
   }
 });
 
+// paste text event - add copyright text upon pasting
+
+function addCopy() {
+  //Get the selected text and append the extra info
+  const copyright = " | Copyright Fun Bus 2019";
+  const selection = window.getSelection();
+  const copytext = selection + copyright;
+  const newdiv = document.createElement("div");
+
+  //insert the container, fill it with the extended text, and define the new selection
+  document.body.appendChild(newdiv);
+  newdiv.textContent = copytext;
+  selection.selectAllChildren(newdiv);
+}
+
+document.addEventListener("copy", addCopy);
+
 // nav links preventDefault
 function prevDefault(event) {
   event.preventDefault();
