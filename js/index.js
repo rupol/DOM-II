@@ -1,7 +1,15 @@
 // Your code goes here
-// image mouseenter and mouseleave events
 const contentImages = document.querySelectorAll("img");
+const destinationContainer = document.querySelectorAll(".destination");
+const destinationButton = document.querySelectorAll(".btn");
+const body = document.querySelector("body");
+const header = document.querySelector("header");
+const footer = document.querySelector("footer");
+const footerText = document.querySelector("footer p");
+const navLinks = document.querySelectorAll("nav .nav-link");
+const darkModeButton = document.querySelector(".toggle-btn");
 
+// image mouseenter and mouseleave events
 function imgOpacity(event) {
   event.currentTarget.style.transition = "all .5s";
   event.currentTarget.style.opacity = "0.5";
@@ -17,9 +25,6 @@ contentImages.forEach(img => {
 });
 
 // destination mouseover, mouseout, mousedown, mouseup events and stopPropagation
-const destinationContainer = document.querySelectorAll(".destination");
-const destinationButton = document.querySelectorAll(".btn");
-
 function enlarge(event) {
   event.currentTarget.style.transition = "all .5s";
   event.currentTarget.style.transform = "scale(1.1, 1.1)";
@@ -58,12 +63,6 @@ destinationButton.forEach(button => {
 });
 
 // dark mode click event
-const body = document.querySelector("body");
-const header = document.querySelector("header");
-const footer = document.querySelector("footer");
-const footerText = document.querySelector("footer p");
-const navLinks = document.querySelectorAll("nav .nav-link");
-const darkModeButton = document.querySelector(".toggle-btn");
 body.style.background = "white";
 
 function changeColor(elem, colorChoice) {
@@ -98,3 +97,12 @@ function darkMode() {
 }
 
 darkModeButton.addEventListener("click", darkMode);
+
+// nav links preventDefault
+function prevDefault(event) {
+  event.preventDefault();
+}
+
+navLinks.forEach(link => {
+  link.addEventListener("click", prevDefault);
+});
