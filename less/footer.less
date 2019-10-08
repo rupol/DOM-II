@@ -2,11 +2,25 @@
   width: 100%;
   border-top: 2px dashed @silver;
   background: @sandy-beach;
-  
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
   p {
     text-align: center;
     color: @font-color;
     font-size: 1.6rem;
     padding: 20px;
+  }
+
+  span {
+    .center;
+    font-size: 1.6rem;
+    padding: 20px;
+  }
+
+  .toggle-btn {
+    .button-creator(40px, 40px, @button-bg, @white, 1.6rem);
+    border-radius: 50%;
   }
 }
